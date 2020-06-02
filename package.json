@@ -1,0 +1,17 @@
+{
+  "name": "Mig",
+  "version": "1.0.0",
+  "description": "Mig(migration)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "build": "node ./src/index.js",
+    "analyze": "webpack-bundle-analyzer ./stats.json "
+  },
+  "author": "zoupeng",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.4",
+    "open": "^7.0.4"
+  }
+}
