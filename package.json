@@ -8,9 +8,14 @@
     "build": "node ./src/index.js",
     "analyze": "webpack-bundle-analyzer ./stats.json "
   },
+  "bin": {
+    "mig": "./index.js"
+  },
   "author": "zoupeng",
   "license": "ISC",
   "dependencies": {
+    "art-template": "^4.13.2",
+    "commander": "^5.1.0",
     "nodemon": "^2.0.4",
     "open": "^7.0.4"
   }
