@@ -20,11 +20,11 @@
 {
     devDependencies:
     {{each packageJSON.devDependencies}}
-        {{$index}}: {{$value}},
+        "{{$index}}": "{{$value}}",
     {{/each}}
     dependencies:
     {{each packageJSON.dependencies}}
-        {{$index}}: {{$value}},
+        "{{$index}}": "{{$value}}",
     {{/each}}
 }
 </pre>
