@@ -6,7 +6,7 @@
 <body>
     <div class="wrapper">
         <section>
-            <h1>共依赖{{files.length}}个文件</h1>
+            <h2>共依赖{{files.length}}个文件</h2>
             <ol>
                 {{each files}}
                 <li>{{$value}}</li>
@@ -15,7 +15,7 @@
             
         </section>
         <section>
-            <h1>依赖的NPM包:</h1>
+            <h2>依赖的NPM包:</h2>
 <pre>
 {
     devDependencies:
@@ -33,6 +33,8 @@
     <style>
         html,body,div{
             margin:0;padding:0;
+            background: #333;
+            color: #fff;
         }
         .wrapper{
             display: flex;
