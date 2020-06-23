@@ -31,7 +31,7 @@ exports.init = function({path, dirname}){
                 const url = element.substring(2, element.length);
                 // TODO 不换号动态输出百分比进度
                 // console.log(`${index+1}/${pathData.length}`)
-                copyFile(DIR + url, 'dist/' + url)
+                copyFile(DIR + url, 'Mig/' + url)
             });
             console.log('代码结构复制成功')
         })

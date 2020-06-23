@@ -1,7 +1,7 @@
 {
-  "name": "Mig",
-  "version": "1.0.0",
-  "description": "Mig(migration)",
+  "name": "@w/mig",
+  "version": "1.0.1",
+  "description": "Mig(migration) 自动迁移依赖的代码文件工具",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",

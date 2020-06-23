@@ -7,6 +7,9 @@ Migration(迁移)，迁移代码的工具
 webpack-bundle-analyzer 经测试版本: ^2.11.3
 
 
-## 用法
-<分析文件路径>:<文件目录名>
-node index.js -a /Users/wubaCunzhen/dist/a.json:wubaCunzhen
+## 用法(比如从wubaChunZhen项目迁移)
+1. npm install -g @w/mig --registry=http://cnpm.58v5.cn
+2. npm run dev --build=入口 --analyze
+3. 会得到依赖分析的文件：./dist/入口_Analyze.json
+4. mig -a 分析文件的绝对路径:项目根文件夹名，eg. ```mig -a /workspace/wubaCunzhen/dist/entry.json:wubaCunzhen```
+5. ./Mig文件夹下会按照原路径产出所有依赖文件，并打开一个实例页面展示依赖的文件列表和依赖的npm包
