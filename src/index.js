@@ -2,9 +2,7 @@
 exports.init = function({path, dirname}){
 
     let fs = require('fs');
-    // const DIR = '/Users/zoupeng/workspace/git/weitech/wubaCunzhen/';
     const DIR = `${path.split(dirname)[0]}${dirname}/`;
-    // let stream = fs.createReadStream(`${DIR}dist/salary_resume_post_Analyze.json`)
     let stream = fs.createReadStream(path);
     const util = require('./util.js');
     const display = require('./display.js');
@@ -29,8 +27,6 @@ exports.init = function({path, dirname}){
             // 复制文件
             pathData.forEach((element, index) => {
                 const url = element.substring(2, element.length);
-                // TODO 不换号动态输出百分比进度
-                // console.log(`${index+1}/${pathData.length}`)
                 copyFile(DIR + url, DIR + 'Mig/' + url)
             });
             console.log('代码结构复制成功')

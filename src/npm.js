@@ -4,7 +4,6 @@ module.exports = {
         list.forEach(element => {
             const str = element.name.replace(/\.\/node_modules/, '');
             const name = str.match(/(?<=\/).*?(?=\/)/)[0]
-            // console.log('name', name)
             if(names.indexOf(name) == -1){
                 names.push(name)
             }

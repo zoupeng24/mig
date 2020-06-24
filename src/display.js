@@ -5,7 +5,6 @@ const start = function(data, port=1337){
     const http = require('http');
     http.createServer(function (req, res) {
         var html = template(__dirname + '/temp.html', data);
-        // console.log(html)
         res.write(html);
     }).listen(port);
     
@@ -16,20 +15,6 @@ const start = function(data, port=1337){
 }
 
 module.exports = {
-    // showLevel: function(data){
-    //     temp(function(res){
-    //         res.write('<ul>');
-    //         for(let i=0;i<data.length;i++){
-    //             res.write(`<li><span>Level:${data[i][0].depth}</span>`);
-    //             const item = data[i];
-    //             for(let j=0;j<item.length;j++){
-    //                 res.write(`<div>${item[j].name}</div>`);
-    //             }
-    //             res.write('</li>');
-    //         }
-    //         res.write('</ul>');
-    //     })
-    // },
     showPath: function(files, packageJSON){
         start({files, packageJSON})
     }
