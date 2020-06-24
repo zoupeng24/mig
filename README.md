@@ -11,5 +11,5 @@ webpack-bundle-analyzer 经测试版本: ^2.11.3
 1. npm install -g @w/mig --registry=http://cnpm.58v5.cn
 2. npm run dev --build=入口 --analyze
 3. 会得到依赖分析的文件：./dist/入口_Analyze.json
-4. mig -a 分析文件的绝对路径:项目根文件夹名，eg. ```mig -a /workspace/wubaCunzhen/dist/entry.json:wubaCunzhen```
-5. ./Mig文件夹下会按照原路径产出所有依赖文件，并打开一个实例页面展示依赖的文件列表和依赖的npm包
+4. mig -a 分析文件的绝对路径:项目根文件夹名，eg. ```sudo mig -a /workspace/wubaCunzhen/dist/入口_Analyze.json:wubaCunzhen```
+5. 当前目录下会生成一个Mig文件夹，里面下会按照原路径产出所有依赖文件，并打开一个实例页面展示依赖的文件列表和依赖的npm包

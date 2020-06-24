@@ -17,7 +17,6 @@ function copyFile(from, to){
         if (err) {
             console.log("读取失败");
         } else {
-            // console.log(to)
             writeFileRecursive(to, data, (err)=>{
                 if(err) console.error(err);
                 // console.info("write success");
