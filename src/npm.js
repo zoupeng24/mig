@@ -1,15 +1,20 @@
+
 module.exports = {
     parse: function(list, dir){
         const names = [];
-        list.forEach(element => {
-            const str = element.name.replace(/\.\/node_modules/, '');
-            const name = str.match(/(?<=\/).*?(?=\/)/)[0]
-            if(names.indexOf(name) == -1){
-                names.push(name)
-            }
-        });
+        try {
+         list.forEach(element => {
+             const str = element.name.replace(/\.\/node_modules\//, '');
+             const end = str.indexOf('/');
+             const name = str.slice(0, end);
+             if(names.indexOf(name) == -1){
+                 names.push(name)
+             }
+         });
+        } catch (e) {
+         console.log(e)
+        }
         return this.dealDir(names, dir)
-
     },
     dealDir: function(names, dir){
         return new Promise(function(resolve, reject){
