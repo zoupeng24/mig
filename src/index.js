@@ -15,7 +15,11 @@ exports.init = function({path, dirname}){
     });
     stream.on('end', function () {
         const result = JSON.parse(data);
-        const modules = result.chunks[0].modules;
+        console.log(`分析到${result.chunks.length}个chunks(代码块)`);
+        let modules = [];
+        result.chunks.forEach((item) => {
+            modules = modules.concat(item.modules);
+        })
         const {npm_modules, self_modules} = util.split(modules)
 
         // 反向分析npm

@@ -28,7 +28,14 @@ module.exports = {
     pathJoin: function (list) {
         const result = []
         list.forEach((i) => {
-            i.depth && result.push(i.name)
+            // 是否为入口模块
+            const isRootModule = i.depth === 0;
+            // 是否为相对地址模块(项目内自己编写的已./开头)
+            const isRelativeModule = i.name.indexOf('./') === 0;
+            
+            if(!isRootModule && isRelativeModule) {
+                result.push(i.name)
+            }
         })
         return result;
     },
