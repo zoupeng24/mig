@@ -1,8 +1,28 @@
+// 根据属性去重
+function filterByName(data, Name) { 
+    let dest = [];
+    for (let i = 0; i < data.length; i++) {
+        let ai = data[i];
+        if (i == 0) {
+            dest.push(ai);
+        } else {
+            let filterData = dest.filter(function (e) {
+                return e[Name] == ai[Name];
+            })
+            if (filterData.length == 0) {
+                dest.push(ai);
+            }
+        }
+    }
+    return dest;
+};
+
 module.exports = {
     // 区分 node_modules
     split: function (modules) {
         const npm_modules = [];
         const self_modules = [];
+        modules = filterByName(modules, 'name');
         modules.forEach((item) => {
             if ((new RegExp(/node_modules/)).test(item.name)) {
                 npm_modules.push(item)
