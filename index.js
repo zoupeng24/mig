@@ -6,7 +6,7 @@ const program = require('commander');
 program
     .version('0.0.1', '-v, --version')
     .usage('<command> [options]')
-    .option('-a, --analyze <path>:<dirname>', '分析', function(str){
+    .option('-bc, --bundleCopy <path>:<dirname>', '根据bundle-analyzer产物分析&复制', function(str){
         return {
             path: str.split(':')[0],
             dirname: str.split(':')[1]
@@ -14,12 +14,9 @@ program
     })
     .parse(process.argv)
 
-if (program.analyze) {
-    const {analyze} = program;
-    const {init} = require('./src/index.js');
-    init(analyze)
+if (program.bundleCopy) {
+    const {bundleCopy} = program;
+    const {init} = require('./src/bc/index.js');
+    init(bundleCopy)
 }
-
-// eg  文件路径:文件目录名
-// /Users/wubaCunzhen/dist/a.json:wubaCunzhen
 

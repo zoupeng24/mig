@@ -1,4 +1,10 @@
 
+/* 
+ * 基于webpack-bundle-analyzer产物文件进行分析，
+ * 展示依赖的代码&npm包，并按照目录结构将其自动复制出来
+ * webpack-bundle-analyzer 经测试版本: 2.11.3
+ */
+
 exports.init = function({path, dirname}){
 
     let fs = require('fs');
@@ -7,7 +13,7 @@ exports.init = function({path, dirname}){
     const util = require('./util.js');
     const display = require('./display.js');
     const npmParser = require('./npm.js');
-    const { copyFile } = require('./copy.js');
+    const { copyFile } = require('../util/copy.js');
 
     let data = '';
     stream.on('data', function (chrunk) {
