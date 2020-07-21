@@ -1,6 +1,6 @@
 
 module.exports = {
-    parse: function(list, dir){
+    parse: function(list, projectPath){
         const names = [];
         try {
          list.forEach(element => {
@@ -14,12 +14,12 @@ module.exports = {
         } catch (e) {
          console.log(e)
         }
-        return this.dealDir(names, dir)
+        return this.dealDir(names, projectPath)
     },
-    dealDir: function(names, dir){
+    dealDir: function(names, projectPath){
         return new Promise(function(resolve, reject){
             let fs = require('fs');
-            let stream = fs.createReadStream(`${dir}package.json`)
+            let stream = fs.createReadStream(projectPath+'package.json')
             let data = '';
             stream.on('data', function (chrunk) {
                 data += chrunk;

@@ -20,19 +20,20 @@ async function dealNpm(dependance, projectPath){
 
 
 // 复制文件
-function dealCopy(){
+function dealCopy({projectPath,dependance}){
+    const {CopyTarget} = require('./config/defaultConfig');
     dependance.relativeList.forEach((element) => {
-        const target = element.replace(projectPath, './__Mig/')
+        const target = element.replace(projectPath, CopyTarget)
         copyFile(element, target)
     });
-    console.log(`已成功复制了${dependance.relativeList.length}个文件到当前__Mig文件夹中.`)
+    console.log(`已成功复制了${dependance.relativeList.length}个文件到${CopyTarget}文件夹中.`)
 }
 
 async function main({projectPath, entryPath, shouldCopy=false}){
     const dependance = getDependance(entryPath)
     console.log(`该入口依赖了${dependance.relativeList.length}个文件,${dependance.npmList.length}个NPM包.`);
     
-    shouldCopy && dealCopy();
+    shouldCopy && dealCopy({projectPath, dependance});
 
     if(dependance.npmList.length > 0){
         dealNpm(dependance, projectPath);

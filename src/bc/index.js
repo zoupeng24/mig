@@ -5,15 +5,15 @@
  * webpack-bundle-analyzer 经测试版本: 2.11.3
  */
 
-exports.init = function({path, dirname}){
+exports.init = function({projectPath, analyzePath}){
 
     let fs = require('fs');
-    const DIR = `${path.split(dirname)[0]}${dirname}/`;
-    let stream = fs.createReadStream(path);
+    let stream = fs.createReadStream(analyzePath);
     const util = require('./util.js');
     const display = require('./display.js');
     const npmParser = require('./npm.js');
-    const { copyFile } = require('../util/copy.js');
+    const copyFile = require('../util/copyFile.js');
+    const {CopyTarget} = require('../config/defaultConfig');
 
     let data = '';
     stream.on('data', function (chrunk) {
@@ -29,7 +29,7 @@ exports.init = function({path, dirname}){
         const {npm_modules, self_modules} = util.split(modules)
 
         // 反向分析npm
-        npmParser.parse(npm_modules, DIR).then(function(packageJSON){
+        npmParser.parse(npm_modules, projectPath).then(function(packageJSON){
             // 显示目录数据
             const pathData = util.pathJoin(self_modules);
             display.showPath(pathData.sort(), packageJSON)
@@ -37,7 +37,7 @@ exports.init = function({path, dirname}){
             // 复制文件
             pathData.forEach((element, index) => {
                 const url = element.substring(2, element.length);
-                copyFile(DIR + url, DIR + 'Mig/' + url)
+                copyFile(projectPath + url, CopyTarget + url)
             });
             console.log('代码结构复制成功')
         })

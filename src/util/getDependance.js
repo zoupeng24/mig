@@ -33,7 +33,7 @@ const getDependanceList = function({result, entry_path, astConfig}){
                         }
                     }
                 } catch(e){
-                    console.log('e', result)
+                    console.log('分析依赖出错', e)
                 }
             } else {
                 if(result.npmDep.indexOf(value) === -1 && value !== null){

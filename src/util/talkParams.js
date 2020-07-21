@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 
 // 获取参数
-async function talkParams(){
+exports.talkParams = async function (){
     const {projectPath} = await inquirer.prompt([
         {
             type: 'input',
@@ -33,4 +33,27 @@ async function talkParams(){
     };
 }
 
-module.exports = talkParams;
+// 获取基于webpack-bundle-analyze方式的参数
+exports.talkParamsForBC = async function(){
+    const {analyzePath} = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'analyzePath',
+            message: `请输入webpack-bundle-analyze分析结果文件的绝对路径:`
+        }
+    ]);
+    let {projectPath} = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'projectPath',
+            message: `请输入项目根目录的绝对地址:`
+        }
+    ]);
+    if(projectPath[projectPath.length-1] !== '/'){
+        projectPath = projectPath + '/'
+    }
+    return {
+        projectPath,
+        analyzePath,
+    };
+}
