@@ -1,12 +1,12 @@
 {
   "name": "@w/mig",
-  "version": "1.1.1",
-  "description": "Mig(migration) 自动迁移依赖的代码文件工具",
+  "version": "2.0.1",
+  "description": "米格迁移 Mig(migration) 自动迁移入口所依赖的代码文件",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",
-    "build": "node ./src/index.js",
-    "analyze": "webpack-bundle-analyzer ./stats.json "
+    "test": "node ./index.js -c",
+    "build": "node ./src/index.js"
   },
   "bin": {
     "mig": "./index.js"
@@ -14,8 +14,11 @@
   "author": "zoupeng",
   "license": "ISC",
   "dependencies": {
+    "@babel/parser": "^7.10.5",
+    "@babel/traverse": "^7.10.5",
     "art-template": "^4.13.2",
     "commander": "^5.1.0",
+    "inquirer": "^7.3.2",
     "nodemon": "^2.0.4",
     "open": "^7.0.4"
   }

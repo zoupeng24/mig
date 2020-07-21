@@ -11,6 +11,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
+            "runtimeArgs": [
+                "-c /Users/zoupeng/workspace/git/tongzhen-fe/rn-wbtown-user:/App/entry/zhaopin.js"
+            ],
             "program": "${workspaceFolder}/src/index.js"
         }
     ]

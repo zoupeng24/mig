@@ -1,4 +1,6 @@
-var fs=require("fs");
+// 复制文件，没有目录递归创建
+
+var fs = require("fs");
 
 // 递归创建目录
 function mkdirSync(dir, cb) {
@@ -19,8 +21,8 @@ function mkdirSync(dir, cb) {
       })
     }
     next(index);
-
 }
+
 const writeFileRecursive = function(path, buffer, callback){
     let lastPath = path.substring(0, path.lastIndexOf("/"));
     mkdirSync(lastPath, function(){
@@ -44,4 +46,4 @@ function copyFile(from, to){
     });
 }
 
-exports.copyFile = copyFile;
+module.exports = copyFile;
