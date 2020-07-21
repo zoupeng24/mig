@@ -19,14 +19,6 @@ async function dealNpm(dependance, projectPath){
 }
 
 
-exports.copy = ({projectPath, entryPath}) => {
-    main({projectPath, entryPath, shouldCopy: true})
-}
-
-exports.show = ({projectPath, entryPath}) => {
-    main({projectPath, entryPath})
-}
-
 // 复制文件
 function dealCopy(){
     dependance.relativeList.forEach((element) => {
@@ -48,3 +40,5 @@ async function main({projectPath, entryPath, shouldCopy=false}){
         run.showFiles({files: dependance.relativeList})
     }
 }
+
+module.exports = main;

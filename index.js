@@ -4,6 +4,8 @@ process.title = 'mig';
 
 const program = require('commander');
 const talkParams = require('./src/util/talkParams.js');
+const {show, copy} = require('./src/directives.js');
+
 program
     .version('2.0.1', '-v, --version')
     .usage('<command> [options]')
@@ -23,7 +25,6 @@ program
 // 复制依赖所有文件
 if (program.copy) {
     talkParams().then(({projectPath, entryPath}) => {
-        const {copy} = require('./src/init.js');
         copy({projectPath, entryPath})
     })
 }
@@ -31,7 +32,6 @@ if (program.copy) {
 // 展示依赖所有文件
 if (program.show) {
     talkParams().then(({projectPath, entryPath}) => {
-        const {show} = require('./src/init.js');
         show({projectPath, entryPath})
     })
 }
