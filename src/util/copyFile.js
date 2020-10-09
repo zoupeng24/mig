@@ -2,6 +2,17 @@
 
 var fs = require("fs");
 
+// 强制写入文件
+const writeFileRecursive = function(path, buffer, callback){
+  let lastPath = path.substring(0, path.lastIndexOf("/"));
+  mkdirSync(lastPath, function(){
+      fs.writeFile(path, buffer, function(err){
+          if (err) return callback(err);
+          return callback(null);
+      });
+  })
+}
+
 // 递归创建目录
 function mkdirSync(dir, cb) {
     let paths = dir.split('/');
@@ -23,21 +34,12 @@ function mkdirSync(dir, cb) {
     next(index);
 }
 
-const writeFileRecursive = function(path, buffer, callback){
-    let lastPath = path.substring(0, path.lastIndexOf("/"));
-    mkdirSync(lastPath, function(){
-        fs.writeFile(path, buffer, function(err){
-            if (err) return callback(err);
-            return callback(null);
-        });
-    })
-}
-
+// 复制文件
 function copyFile(from, to){
     var fs = require('fs');
     fs.readFile(from, 'utf-8', function(err, data) {
         if (err) {
-            console.log("读取失败,"+from);
+            console.log("文件读取失败,"+from);
         } else {
             writeFileRecursive(to, data, (err)=>{
                 if(err) console.error(err);

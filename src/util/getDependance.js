@@ -1,13 +1,12 @@
-/* 
- * 分析文件依赖列表
-*/
+// 分析文件依赖列表
 
 const parser = require("@babel/parser")
 const traverse = require("@babel/traverse")
 const fs = require("fs");
 const getImportFileSuffix = require('./getImportFileSuffix');
-const Mig_Config = require('../config/defaultConfig')
+const CONFIG = require('../config/defaultConfig')
 
+// 获取文件依赖的列表
 const getDependanceList = function({result, entry_path, astConfig}){
     const data = fs.readFileSync(entry_path)
     const entry_str = data.toString();
@@ -33,7 +32,7 @@ const getDependanceList = function({result, entry_path, astConfig}){
                         }
                     }
                 } catch(e){
-                    console.log('分析依赖出错', e)
+                    console.log('分析依赖报错', e)
                 }
             } else {
                 if(result.npmDep.indexOf(value) === -1 && value !== null){
@@ -50,7 +49,6 @@ const getDependanceList = function({result, entry_path, astConfig}){
 // 获取依赖
 function getDependance(entryPath) {
     const entries = entryPath;
-
     const dependance = {
         relativeList: [],
         npmList: []
@@ -63,7 +61,7 @@ function getDependance(entryPath) {
                 npmDep: []
             },
             entry_path: entries[i], 
-            astConfig: Mig_Config.astConfig,
+            astConfig: CONFIG.astConfig,
         });
         result.relativeDep.forEach((item) => {
             if(dependance.relativeList.indexOf(item) === -1){

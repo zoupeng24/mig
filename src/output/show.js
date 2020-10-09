@@ -1,6 +1,6 @@
 // 启动服务展示结果
 
-const runServer = function({data, port=1337, tempURL}){
+const runServer = function({data, port=1224, tempURL}){
     var template = require("art-template");
     const http = require('http');
     http.createServer(function (req, res) {

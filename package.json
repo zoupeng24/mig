@@ -1,17 +1,16 @@
 {
-  "name": "@w/mig",
-  "version": "2.1.0",
-  "description": "米格迁移 Mig(migration) 自动迁移入口所依赖的代码文件",
+  "name": "MIG",
+  "version": "2.2.0",
+  "description": " Mig(migration) 米格迁移工具 自动迁移入口所依赖的代码文件结构",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",
-    "test": "node ./index.js -bc",
     "build": "node ./src/index.js"
   },
   "bin": {
     "mig": "./index.js"
   },
-  "author": "zoupeng",
+  "author": "zoupeng24",
   "license": "ISC",
   "dependencies": {
     "@babel/parser": "^7.10.5",

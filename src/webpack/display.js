@@ -1,6 +1,6 @@
 // 数据可视化
 
-const start = function(data, port=1337){
+const start = function(data, port=1224){
     var template = require("art-template");
     const http = require('http');
     http.createServer(function (req, res) {

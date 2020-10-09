@@ -1,15 +1,15 @@
-// 根据入口分析文件依赖的 
+// 根据入口文件分析文件依赖
 
 const copyFile = require('./util/copyFile');
 const getDependance = require('./util/getDependance');
 const { getNpmDep } = require('./util/getNpmDep');
-const run = require('./output/run');
+const showTool = require('./output/show');
 
 // 处理NPM
 async function dealNpm(dependance, projectPath){
     const filePath = projectPath + '/package.json';
     getNpmDep({filePath: filePath, targets: dependance.npmList}).then((result)=>{
-        run.showFilesAndNpm({
+        showTool.showFilesAndNpm({
             files: dependance.relativeList,
             packageJSON: result
         })
@@ -38,7 +38,7 @@ async function main({projectPath, entryPath, shouldCopy=false}){
     if(dependance.npmList.length > 0){
         dealNpm(dependance, projectPath);
     } else {
-        run.showFiles({files: dependance.relativeList})
+        showTool.showFiles({files: dependance.relativeList})
     }
 }
 

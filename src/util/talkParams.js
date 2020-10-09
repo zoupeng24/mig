@@ -34,7 +34,7 @@ exports.talkParams = async function (){
 }
 
 // 获取基于webpack-bundle-analyze方式的参数
-exports.talkParamsForBC = async function(){
+exports.talkParamsForWebpack = async function(){
     const {analyzePath} = await inquirer.prompt([
         {
             type: 'input',

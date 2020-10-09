@@ -5,15 +5,17 @@ exports.parseNpmName = (urls) => {
     const names = [];
     try {
         urls.forEach(element => {
-         const str = element.name.replace(/\.\/node_modules\//, '');
-         const end = str.indexOf('/');
-         const name = str.slice(0, end);
-         if(names.indexOf(name) == -1){
-             names.push(name)
-         }
-     });
+            const str = element.name.replace(/\.\/node_modules\//, '');
+            const end = str.indexOf('/');
+            const name = str.slice(0, end);
+            if(names.indexOf(name) == -1){
+                names.push(name)
+            }
+        });
     } catch (e) {
-     console.log(e)
+        console.log(e)
+    } finally {
+        return names;
     }
 };
 
